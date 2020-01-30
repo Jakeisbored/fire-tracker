@@ -24,6 +24,8 @@
   </a>
 </p>
 
+**Note : this is a very basic / small version that i did in a couple of hours . I intend to update and step up its performance and usage through updates . Have fun!**
+
 # Getting started
 1. Install the package
 2. Here is a list of functions available for now :
@@ -49,4 +51,5 @@
 - Self-updated.
 
 # Contact Me
-(Discord)[https://discord.gg/aPs6MgE]
+
+<a href="https://discord.gg/aPs6MgE">Discord</a>
