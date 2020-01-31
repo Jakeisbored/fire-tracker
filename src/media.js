@@ -5,7 +5,23 @@ const axios = require('axios'),
       	wallpapers : 'http://ff.garena.com/wallpaper/en.html',
       	videos : 'http://ff.garena.com/video/en.html'
       };
-module.exports.wallpapersScrap = (type,callback) => {
+/**
+ * A function that gets videos / wallpapers about Free Fire
+ * @function
+ * @param {string} Type of media scraped (wallpapers,videos)
+ * @example <caption>Example about scraping wallpapers</caption>   
+   fire_tracker.charactersScrap('wallpapers',(r,e)=>{
+   if(e) return;
+   console.log(r)
+ })
+ * @example <caption>Example about scraping wallpapers</caption>   
+   fire_tracker.charactersScrap('videos',(r,e)=>{
+   if(e) return;
+   console.log(r)
+ })  
+ * @returns {Promise} Promise object represents the array of videos / wallpapers
+ */
+mediaScrap = (type,callback) => {
 	return new Promise((resolve,reject)=>{
 		switch (type){
 		case 'wallpapers':
@@ -52,5 +68,5 @@ module.exports.wallpapersScrap = (type,callback) => {
 		   return callback(alert('P'));
 	};
 	});
-};
-
+}
+module.exports = mediaScrap;

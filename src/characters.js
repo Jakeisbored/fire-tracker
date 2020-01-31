@@ -3,8 +3,17 @@ const axios = require('axios'),
       cheerio = require('cheerio'),
       errors = require('./errors.js'),
       url = 'http://ff.garena.com/character/en/character_list.html';
-// Scrap function
-module.exports.charactersScrap = (callback)=>{
+/**
+ * A function that gets characters with their description , image and abillities
+ * @function
+ * @example    
+   fire_tracker.charactersScrap((r,e)=>{
+   if(e) return;
+   console.log(r)
+ })
+ * @returns {Promise} Promise object represents the array of characters
+ */
+charactersScrap = (callback)=>{
  return new Promise((resolve,reject)=>{
    	axios.get(url).then(response => {
     const $ = cheerio.load(response.data),
@@ -23,3 +32,4 @@ module.exports.charactersScrap = (callback)=>{
 	});
  });
 };
+module.exports = charactersScrap;

@@ -4505,10 +4505,28 @@ var weaponJson = [{
 //Declarations
 const errors = require('./errors.js'),
       types = ['All','Specify'];
-//Function
-module.exports.weaponScrap = (type,name,callback)=>{
+/**
+ * A function that gets weapon info in Free Fire
+ * @function
+ * @param {string} type type of quantity of info scraped (All,Specify)
+ *
+ * If chosen (Specify) following param must be given :
+ *
+ * @param {string} name name of weapon
+ * @example <caption>Example about scraping all weapons</caption>   
+   fire_tracker.weaponScrap('all',(r,e)=>{
+   if(e) return;
+   console.log(r)
+ })
+ * @example <caption>Example about scraping specific weapons</caption>   
+   fire_tracker.weaponScrap('Specific','G18',(r,e)=>{
+   if(e) return;
+   console.log(r)
+ })  
+ * @returns {Promise} Promise object represents the object of weapon/weapons
+ */
+weaponScrap = (type,name,callback)=>{
 	return new Promise((resolve, reject) => {
-		type = types.includes(type) ? type : 'All';
  		name = type == 'Specify' ? name : null;
  		switch(type){
  			case 'All':
@@ -4531,4 +4549,5 @@ module.exports.weaponScrap = (type,name,callback)=>{
      		    break;
  			};
     });	
-};
+}
+module.exports = weaponScrap;
