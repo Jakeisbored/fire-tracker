@@ -7,49 +7,38 @@
 </p>
 
 <p align="center">
+   <a href="https://www.npmjs.com/package/fire-tracker">
+    <img src="https://img.shields.io/badge/npm-by--jake-brightgreen.svg">
+  </a>
+  <a href="https://www.npmjs.com/package/fire-tracker">
+    <img src="https://img.shields.io/npm/dt/fire-tracker.svg?maxAge=3600">
+  </a>
   <a href="https://travis-ci.org/kokkoooo/fire-tracker">
-    <img src="https://travis-ci.org/kokkoooo/fire-tracker.svg?branch=master" alt="Build Status">
-  </a>
-  <a href="https://coveralls.io/github/kokkoooo/fire-tracker?branch=master">
-    <img src="https://coveralls.io/repos/github/kokkoooo/fire-tracker/badge.svg?branch=master" alt="Coverage Status">
-  </a>
-  <a href="https://david-dm.org/kokkoooo/fire-tracker">
-    <img src="https://david-dm.org/kokkoooo/fire-tracker/status.svg" alt="dependencies Status">
-  </a>
-  <a href="https://david-dm.org/kokkoooo/fire-tracker?type=dev">
-    <img src="https://david-dm.org/kokkoooo/fire-tracker/dev-status.svg" alt="devDependencies Status">
-  </a>
-  <a href="https://david-dm.org/kokkoooo/fire-tracker?type=peer">
-    <img src="https://david-dm.org/kokkoooo/fire-tracker/peer-status.svg" alt="peerDependencies Status">
+    <img src="https://travis-ci.org/kokkoooo/fire-tracker.svg?branch=master">
   </a>
 </p>
 
-**Note : this is a very basic / small version that i did in a couple of hours . I intend to update and step up its performance and usage through updates . Have fun!**
-
 # Getting started
-1. Install the package
-2. Here is a list of functions available for now :
-   *function*:`output@type`:**params@type**
-   *wallpapersScrap(type)*:`wallpapers@array`:**type@string**
-   *charactersScrap()*:`characterss@array`:**none@none**
-   *weaponsScrap(type,name)*:`wallpapers@array`:**type@string/name@string**
+1. Install the package through `npm i fire-tracker` or `yarn add fire-tracker`
+2. You're done ! Consult the docs and get going !
 
-# Example
-   <code>
-   	const fire-tracker = require('fire-tracker');
-   	fire-tracker.weaponsScrap('All',(r,e)=>{
-   	// We didn't include 'name' because we chose 'All' before.
-     if(e) return;
-     console.log(r);
-   });
-   </code>
-  
+# Docs
+ 
+ Consult docs [here](https://kokkoooo.github.io)
+
 # Features
+
+- No API key required!
 - Fast , reliable and flexible.
 - Easy to use.
 - Open source.
 - Self-updated.
+- Documented.
+
 
 # Contact Me
 
-<a href="https://discord.gg/aPs6MgE">Discord</a>
+[Discord](https://discord.gg/aPs6MgE)
+
+# Making things clear
+ This isn't official or related at any means to Garena Inc but all rights belong to them for material used in this project . Also , sadly there isn't any player data shared with the public so player data cannot be retrieved.
