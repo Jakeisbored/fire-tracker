@@ -8,20 +8,25 @@ const axios = require('axios'),
 /**
  * A function that gets videos / wallpapers about Free Fire
  * @function
- * @param {string} Type of media scraped (wallpapers,videos)
+ * @param {string} type Type of media scraped (wallpapers,videos)
+ *
+ * If chosen (wallpapers) . You'll need this param
+ *
+ * @param {string} platform The platform of the wallpaper (pc,mobile,pop,all)
  * @example <caption>Example about scraping wallpapers</caption>   
-   fire_tracker.charactersScrap('wallpapers',(r,e)=>{
+   fire_tracker.charactersScrap('wallpapers','all',(r,e)=>{
    if(e) return;
    console.log(r)
  })
  * @example <caption>Example about scraping wallpapers</caption>   
    fire_tracker.charactersScrap('videos',(r,e)=>{
+  // This does not work for now
    if(e) return;
    console.log(r)
  })  
  * @returns {Promise} Promise object represents the array of videos / wallpapers
  */
-mediaScrap = (type,callback) => {
+mediaScrap = (type,platform,callback) => {
 	return new Promise((resolve,reject)=>{
 		switch (type){
 		case 'wallpapers':
@@ -34,15 +39,43 @@ mediaScrap = (type,callback) => {
               children.each((i, li) => {
               const children = $(li).children();
               children.each((i, a) => {
-                data.push({
-                	'pc':$(a).data('pc'),
-                	'mobile':$(a).data('mobile'),
-                	'pop':$(a).data('pop')
-                })
+              switch(platform){
+                 case 'pc':
+                      data.push({
+                                        'pc':$(a).data('pc')
+                                            });
+                      resolve(data);
+                      return callback(data); 
+                 break;
+                 case 'mobile':
+                      data.push({
+                                        'mobile':$(a).data('mobile')
+                                            });
+                      resolve(data);
+                      return callback(data); 
+                 break;
+                 case 'pop':
+                      data.push({
+                                        'pop':$(a).data('pop')
+                                            }); 
+                      resolve(data);
+                      return callback(data); 
+                 break;
+                 case 'all':
+                      data.push({
+                                            'pc':$(a).data('pc'),
+                                            'mobile':$(a).data('mobile'),
+                                            'pop':$(a).data('pop')
+                                            });
+                      resolve(data);
+                      return callback(data);
+                 break;
+                 default:
+                      reject(alert('P')); 
+                      return callback(alert('P'));            
+              };
              });
             });
-              resolve(data);
-              return callback(data);
            });
 
 		 });
