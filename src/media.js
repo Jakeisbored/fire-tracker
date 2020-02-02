@@ -3,7 +3,7 @@ const axios = require('axios'),
       errors = require('./errors.js'),
       urls = {
       	wallpapers : 'http://ff.garena.com/wallpaper/en.html',
-      	videos : 'http://ff.garena.com/video/en.html'
+      	videos : 'https://www.youtube.com/channel/UC4AB0_ectRryjCF_ugD0U8w/videos'
       };
 /**
  * A function that gets videos / wallpapers about Free Fire
@@ -14,20 +14,14 @@ const axios = require('axios'),
  *
  * @param {string} platform The platform of the wallpaper (pc,mobile,pop,all)
  * @example <caption>Example about scraping wallpapers</caption>   
-   fire_tracker.charactersScrap('wallpapers','all',(r,e)=>{
-   if(e) return;
-   console.log(r)
- })
- * @example <caption>Example about scraping wallpapers</caption>   
-   fire_tracker.charactersScrap('videos',(r,e)=>{
-  // This does not work for now
-   if(e) return;
-   console.log(r)
- })  
+   fire_tracker.charactersScrap('wallpapers','all').then(r=>{
+    console.log(r);
+   }).catch(e=>{
+    console.log(e);
+   });
  * @returns {Promise} Promise object represents the array of videos / wallpapers
  */
-mediaScrap = (type,platform,callback) => {
-	return new Promise((resolve,reject)=>{
+mediaScrap = async (type,platform) => {
 		switch (type){
 		case 'wallpapers':
 		// Requesting the page and fetching html
@@ -44,22 +38,19 @@ mediaScrap = (type,platform,callback) => {
                       data.push({
                                         'pc':$(a).data('pc')
                                             });
-                      resolve(data);
-                      return callback(data); 
+                      return data; 
                  break;
                  case 'mobile':
                       data.push({
                                         'mobile':$(a).data('mobile')
                                             });
-                      resolve(data);
-                      return callback(data); 
+                      return data; 
                  break;
                  case 'pop':
                       data.push({
                                         'pop':$(a).data('pop')
-                                            }); 
-                      resolve(data);
-                      return callback(data); 
+                                            });
+                      return data; 
                  break;
                  case 'all':
                       data.push({
@@ -67,12 +58,10 @@ mediaScrap = (type,platform,callback) => {
                                             'mobile':$(a).data('mobile'),
                                             'pop':$(a).data('pop')
                                             });
-                      resolve(data);
-                      return callback(data);
+                      return data;
                  break;
                  default:
-                      reject(alert('P')); 
-                      return callback(alert('P'));            
+                      return alert('P');            
               };
              });
             });
@@ -80,26 +69,8 @@ mediaScrap = (type,platform,callback) => {
 
 		 });
 		 break;
-		 /*
-		 case 'videos':
-		 // Requesting the page and fetching html
-		 axios.get(urls.videos).then((response) => {
-           const $ = cheerio.load(response.data),
-                 data = [];
-           $('#m-video').each((i, ul) => {
-              const children = $(ul).children();
-              children.each((i, li) => {
-                data.push($(li).data('video'))
-              });
-              return data && console.log(data);
-           });
-		 });
-		 break;
-		 */
 		 default:
-		   reject(alert('P'));
-		   return callback(alert('P'));
+		   return alert('P');
 	};
-	});
 }
 module.exports = mediaScrap;

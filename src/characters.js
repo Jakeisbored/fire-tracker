@@ -7,17 +7,18 @@ const axios = require('axios'),
  * A function that gets characters with their description , image and abillities
  * @function
  * @example    
-   fire_tracker.charactersScrap((r,e)=>{
-   if(e) return;
-   console.log(r)
- })
+   fire_tracker.charactersScrap().then(r=>{
+      console.log(r);
+   }).catch(e=>{
+      console.log(e);
+   });
  * @returns {Promise} Promise object represents the array of characters
  */
-charactersScrap = (callback)=>{
- return new Promise((resolve,reject)=>{
+charactersScrap = async (type)=>{
    	axios.get(url).then(response => {
     const $ = cheerio.load(response.data),
           data = [];
+    type = type
     $('.g-char-list').each((i,li)=>{
       const children = $(li).children();
       children.each((i,a)=>{
@@ -27,9 +28,7 @@ charactersScrap = (callback)=>{
       });
       });
     });
-      resolve(data);
-      return callback(data);
+      return data;
 	});
- });
 };
 module.exports = charactersScrap;

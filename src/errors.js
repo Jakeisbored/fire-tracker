@@ -4,6 +4,7 @@ alert = (type , code) => {
           'P':'Parameter',
           'T':'Token' ,
           'M':'Missing Weapon',
+          'Mc':'Missing Category',
           'D':'Default'
           },
           codes = [404,200,'Non specified'];

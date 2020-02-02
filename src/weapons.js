@@ -4504,50 +4504,57 @@ var weaponJson = [{
 }];
 //Declarations
 const errors = require('./errors.js'),
-      types = ['All','Specify'];
+      data = [];
 /**
  * A function that gets weapon info in Free Fire
  * @function
  * @param {string} type type of quantity of info scraped (All,Specify)
  *
- * If chosen (Specify) following param must be given :
+ * If chosen (Specify or Category) following param must be given :
  *
- * @param {string} name name of weapon
+ * @param {string} name name of weapon / name of category
  * @example <caption>Example about scraping all weapons</caption>   
-   fire_tracker.weaponScrap('all',(r,e)=>{
-   if(e) return;
-   console.log(r)
- })
+   fire_tracker.weaponScrap('all').then(r=>{
+        console.log(r);
+   }).catch(e=>{
+        console.log(e);
+   });
  * @example <caption>Example about scraping specific weapons</caption>   
-   fire_tracker.weaponScrap('Specific','G18',(r,e)=>{
-   if(e) return;
-   console.log(r)
- })  
+   fire_tracker.weaponScrap('Specific','G18').then(r=>{
+        console.log(r);
+   }).catch(e=>{
+        console.log(e);
+   });
  * @returns {Promise} Promise object represents the object of weapon/weapons
  */
-weaponScrap = (type,name,callback)=>{
-	return new Promise((resolve, reject) => {
- 		name = type == 'Specify' ? name : null;
+weaponScrap = async (type,name)=>{
+        var data_pack=[],
+              data_solo;
  		switch(type){
  			case 'All':
-     			resolve(weaponJson);
- 				return callback(weaponJson);
+ 				return weaponJson;
      			break;
      		case 'Specify':
-     		    if(name == null) {
- 					reject(alert('P',404));
- 					return callback(alert('P',404));
+     		    if(!name) {
+ 					return alert('P',404);
      		     };
-     		    for(i=0;i<weaponJson.length;i++){
- 					if(weaponJson[i].name['en']==name) {
- 						resolve(weaponJson[i]);
- 						return callback(weaponJson[i]);
- 					};
-     		        reject(alert('M',404));
-     		        return callback(alert('M',404));
-     		    };
+                weaponJson.forEach(e=>{
+                    if(e['name']['en']==name){data_solo=e};
+                });
+                return data_solo!=null?data_solo:alert('M');
      		    break;
+            case 'Category':
+                if(!name) {
+                    return alert('P',404);
+                };
+                weaponJson.forEach(e=>{
+                    if(e['type']===name) {data_pack.push(e)};
+                });
+                return data_pack.length>1?data_pack:alert('Mc');
+                break;
+            default:
+                    return alert('P',404);
  			};
-    });	
 }
+
 module.exports = weaponScrap;
