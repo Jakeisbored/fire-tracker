@@ -185,5 +185,37 @@ class FreeFire {
                 return alert('P');
         };
     }
+    /**
+ * A method that displays current weapon names and categories available to seach for
+ * @param {string} type Type stats displayed (byname,bycategory)
+ * @example <caption>Example about viewing weapon names available</caption>   
+   fire_tracker.listOfWeapons('byname').then(r=>{
+    console.log(r);
+   }).catch(e=>{
+    console.log(e);
+   });
+ * @returns {Promise} Promise object represents the array of weapons
+ */
+    async listOfWeapons(type) {
+        const data = [],
+            numOfWeapons = weaponJson.length;
+        type = type != null ? type : 'byname';
+        switch (type.toLowerCase()) {
+            case 'byname':
+                weaponJson.forEach(e => {
+                    data.push(e['name']);
+                });
+                return data;
+                break;
+            case 'bycategory':
+                weaponJson.forEach(e => {
+                    data.push(e['type']);
+                });
+                return data;
+                break;
+            default:
+                return alert('P');
+        };
+    }
 }
 module.exports = FreeFire;
