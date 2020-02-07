@@ -17,7 +17,9 @@
   <a href="https://travis-ci.org/jakeisbored/fire-tracker">
     <img src="https://travis-ci.org/jakeisbored/fire-tracker.svg?branch=master">
   </a>
-   ![Discord Shield](https://discordapp.com/api/guilds/504326398287020035/widget.png?style=shield)
+  <a href="https://discord.gg/9fhkSZH">
+    <img src="https://discordapp.com/api/guilds/504326398287020035/widget.png?style=shield">
+  </a>
 </p>
 
 # Getting started
