@@ -18,9 +18,6 @@
     <img src="https://travis-ci.org/jakeisbored/fire-tracker.svg?branch=master">
   </a>
 </p>
-
-<iframe src="https://discordapp.com/widget?id=504326398287020035&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
 # Getting started
 1. Install the package through `npm i fire-tracker`
 2. Requiring the package and choosing your game
@@ -47,6 +44,9 @@ const fire_tracker = require('fire_tracker'),
 
 # Contact Me
 
+<a>
+<iframe src="https://discordapp.com/widget?id=504326398287020035&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+</a>
 
 # Change-log
 
