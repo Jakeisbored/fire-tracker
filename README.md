@@ -45,10 +45,8 @@ const fire_tracker = require('fire_tracker'),
 
 # Contact Me
 
-<p align="center">
-  <iframe src="https://discordapp.com/widget?id=504326398287020035&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-</p>
 
+  <iframe src="https://discordapp.com/widget?id=504326398287020035&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 
 # Change-log
 
